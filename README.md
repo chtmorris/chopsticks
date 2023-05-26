@@ -1,5 +1,5 @@
-# chopsticks
-A frontend for whatsabi
+# 🥢 chopsticks 🥢
+A friendly frontend for [whatsabi](https://github.com/shazow/whatsabi)
 
 - Clone repo
 - `npm install`
