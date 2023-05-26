@@ -1,5 +1,4 @@
 <script>
-	export let name;
 	import './main.css';
 	import { ethers } from 'ethers';
 	import { whatsabi } from "@shazow/whatsabi";
