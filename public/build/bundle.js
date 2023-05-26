@@ -36759,15 +36759,15 @@ var app = (function () {
     			p3 = element("p");
     			t10 = text("ABI: ");
     			t11 = text(/*abi*/ ctx[1]);
-    			add_location(h1, file, 27, 1, 784);
-    			add_location(p0, file, 28, 1, 811);
-    			add_location(p1, file, 29, 6, 857);
-    			add_location(div0, file, 29, 1, 852);
-    			add_location(p2, file, 30, 6, 904);
-    			add_location(div1, file, 30, 1, 899);
-    			add_location(p3, file, 31, 6, 946);
-    			add_location(div2, file, 31, 1, 941);
-    			add_location(main, file, 26, 0, 776);
+    			add_location(h1, file, 26, 1, 766);
+    			add_location(p0, file, 27, 1, 793);
+    			add_location(p1, file, 28, 6, 839);
+    			add_location(div0, file, 28, 1, 834);
+    			add_location(p2, file, 29, 6, 886);
+    			add_location(div1, file, 29, 1, 881);
+    			add_location(p3, file, 30, 6, 928);
+    			add_location(div2, file, 30, 1, 923);
+    			add_location(main, file, 25, 0, 758);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -36818,7 +36818,6 @@ var app = (function () {
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
-    	let { name } = $$props;
     	const provider = new Web3Provider(window.ethereum);
     	var selectors = "loading";
     	var abi = "loading";
@@ -36837,24 +36836,13 @@ var app = (function () {
     		console.log("Loggin abi: " + abi);
     	}); // Load the bytecode
 
-    	$$self.$$.on_mount.push(function () {
-    		if (name === undefined && !('name' in $$props || $$self.$$.bound[$$self.$$.props['name']])) {
-    			console_1.warn("<App> was created without expected prop 'name'");
-    		}
-    	});
-
-    	const writable_props = ['name'];
+    	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1.warn(`<App> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$$set = $$props => {
-    		if ('name' in $$props) $$invalidate(2, name = $$props.name);
-    	};
-
     	$$self.$capture_state = () => ({
-    		name,
     		ethers,
     		whatsabi: lib.whatsabi,
     		provider,
@@ -36865,7 +36853,6 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('name' in $$props) $$invalidate(2, name = $$props.name);
     		if ('selectors' in $$props) $$invalidate(0, selectors = $$props.selectors);
     		if ('abi' in $$props) $$invalidate(1, abi = $$props.abi);
     	};
@@ -36874,13 +36861,13 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [selectors, abi, name];
+    	return [selectors, abi];
     }
 
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance, create_fragment, safe_not_equal, { name: 2 });
+    		init(this, options, instance, create_fragment, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -36889,21 +36876,11 @@ var app = (function () {
     			id: create_fragment.name
     		});
     	}
-
-    	get name() {
-    		throw new Error("<App>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set name(value) {
-    		throw new Error("<App>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
     }
 
     const app = new App({
     	target: document.body,
-    	props: {
-    		name: 'world'
-    	}
+    	props: {}
     });
 
     return app;
