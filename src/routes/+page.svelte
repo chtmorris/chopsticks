@@ -11,6 +11,7 @@
 	import { balanceOnBlock } from '$lib/stores/state';
 	import { formatEther } from 'ethers/lib/utils';
 	import { whatsabi } from "@shazow/whatsabi";
+    import { debug } from 'svelte/internal';
    
 	const provider = networkProviders[1];
   
@@ -26,7 +27,9 @@
 
 		// Get an ABI-like list of interfaces
 		abi = whatsabi.abiFromBytecode(r);
+		debugger
 		console.log("Loggin abi: " + abi);
+		
 		
 	}); // Load the bytecode
 </script>
@@ -52,8 +55,27 @@
 	<h1 class="text-5xl text-red font-bold">🥢 ChopSticks 🥢</h1>
 	<p>A friendly frontend for whatsabi</p>
 	<div><p>Contract Address: {address}</p></div>
-	<div><p>Selectors: {selectors}</p></div>
-	<div><p>ABI: {abi}</p></div>
+
+	<table class="hover:table-fixed border-collapse border border-slate-400 border-spacing-72">
+		<thead>
+		  <tr>
+			<th class="border border-slate-300 px-8">Selectors</th>
+			<th class="border border-slate-300 px-8">Type</th>
+			<th class="border border-slate-300 px-8">Payable</th>
+			<th class="border border-slate-300 px-8">State Mutability</th>
+		  </tr>
+		</thead>
+		<tbody>
+			{#each selectors as selector, i}
+				<tr>
+					<td class="border border-slate-300">{selector}</td>
+					<td class="border border-slate-300">{abi[i].type}</td>
+					<td class="border border-slate-300">{abi[i].payable}</td>
+					<td class="border border-slate-300">{abi[i].stateMutability}</td>
+				</tr>
+			{/each}
+		</tbody>
+	  </table>
 	
 
 	<!-- WALLET AND PROVIDER -->
