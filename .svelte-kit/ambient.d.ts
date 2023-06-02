@@ -54,6 +54,7 @@ declare module '$env/static/private' {
 	export const npm_package_readmeFilename: string;
 	export const USER: string;
 	export const npm_package_description: string;
+	export const npm_package_license: string;
 	export const npm_package_scripts_check_watch: string;
 	export const COMMAND_MODE: string;
 	export const SSH_AUTH_SOCK: string;
@@ -179,6 +180,7 @@ declare module '$env/dynamic/private' {
 		npm_package_readmeFilename: string;
 		USER: string;
 		npm_package_description: string;
+		npm_package_license: string;
 		npm_package_scripts_check_watch: string;
 		COMMAND_MODE: string;
 		SSH_AUTH_SOCK: string;

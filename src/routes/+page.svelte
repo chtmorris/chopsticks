@@ -27,14 +27,14 @@
 
 		// Get an ABI-like list of interfaces
 		abi = whatsabi.abiFromBytecode(r);
-		debugger
+		// debugger
 		console.log("Loggin abi: " + abi);
 		
 		
 	}); // Load the bytecode
 </script>
 
-<main class="flex flex-col p-10 w-screen h-screen items-center gap-5 font-serif">
+<main class="flex flex-col p-10 w-screen h-screen items-center gap-5 font-mono text-white">
 
 	<header class="absolute inset-x-0 top-5 z-50">
 		<nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
@@ -48,35 +48,52 @@
 			<button on:click={disconnect} class="p-1 rounded-l text-m bg-black text-white font-semibold hover:scale-[1.05] transition transition-200">
 				Disconnect
 			</button> -->
-		</div>
+		  </div>
 		</nav>
-	  </header>
-
-	<h1 class="text-5xl text-red font-bold">🥢 ChopSticks 🥢</h1>
-	<p>A friendly frontend for whatsabi</p>
-	<div><p>Contract Address: {address}</p></div>
-
-	<table class="hover:table-fixed border-collapse border border-slate-400 border-spacing-72">
-		<thead>
-		  <tr>
-			<th class="border border-slate-300 px-8">Selectors</th>
-			<th class="border border-slate-300 px-8">Type</th>
-			<th class="border border-slate-300 px-8">Payable</th>
-			<th class="border border-slate-300 px-8">State Mutability</th>
-		  </tr>
-		</thead>
-		<tbody>
-			{#each selectors as selector, i}
-				<tr>
-					<td class="border border-slate-300">{selector}</td>
-					<td class="border border-slate-300">{abi[i].type}</td>
-					<td class="border border-slate-300">{abi[i].payable}</td>
-					<td class="border border-slate-300">{abi[i].stateMutability}</td>
-				</tr>
-			{/each}
-		</tbody>
-	  </table>
+	</header>
 	
+	<div class="flex flex-col p-10 w-full h-screen items-center gap-5 font-mono bg-rose-500/80 rounded-lg">
+		<h1 class="text-5xl font-bold">🥢 ChopSticks 🥢</h1>
+		<p>A kitchy frontend for whatsabi</p>
+		<!-- <div><p>Contract Address: {address}</p></div> -->
+	</div>
+
+	<div class="flex flex-col p-10 w-full h-screen items-center gap-5 font-mono bg-green-500/80 rounded-lg">
+		<form>   
+			<label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+			<div class="relative">
+				<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+					<svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+				</div>
+				<input 
+					type="search" id="default-search" class="block w-auto desktop-search p-4 pl-10 text-sm text-gray-900 border-1 border-yellow-300/50 border-s-orange-40 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+					placeholder="Search contract" required
+				>
+				<button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+			</div>
+		</form>
+
+		<table class="hover:table-fixed border-collapse border border-slate-400 border-spacing-72 bg-green-500/50">
+			<thead>
+			<tr>
+				<th class="border border-slate-300 px-8">Selectors</th>
+				<th class="border border-slate-300 px-8">Type</th>
+				<th class="border border-slate-300 px-8">Payable</th>
+				<th class="border border-slate-300 px-8">State Mutability</th>
+			</tr>
+			</thead>
+			<tbody>
+				{#each selectors as selector, i}
+					<tr>
+						<td class="border border-slate-300">{selector}</td>
+						<td class="border border-slate-300">{abi[i].type}</td>
+						<td class="border border-slate-300">{abi[i].payable}</td>
+						<td class="border border-slate-300">{abi[i].stateMutability}</td>
+					</tr>
+				{/each}
+			</tbody>
+	  	</table>
+	</div>
 
 	<!-- WALLET AND PROVIDER -->
 	<!-- <section class="flex flex-col p-10 items-start gap-5 border-2 rounded-xl">
@@ -100,4 +117,24 @@
 		</h2>
 	</section> -->
 	
+	<div class="flex flex-col p-10 pl-1 w-full h-screen items-left gap-5 font-mono rounded-lg mb-8">
+		<p>
+			Made by <span>@chtmorris</span>
+			<br>
+			Powered by @shazow/whatsabi and 4byte.directory
+		</p>
+	</div>
+
 </main>
+
+<style>
+	:global(body){
+		background-image: url("https://www.dropbox.com/s/vo41ctymekx8d17/bg.jpg?raw=1");
+		background-repeat:no-repeat;
+   		background-size:cover;
+	}
+
+	.desktop-search{
+		width:610px;
+	}
+</style>
